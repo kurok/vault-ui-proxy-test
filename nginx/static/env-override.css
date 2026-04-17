@@ -1,0 +1,77 @@
+/* Rainbow banner */
+body {
+  padding-top: 36px;
+}
+body::before {
+  content: "LOCAL TEST";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font: 700 12px/1 sans-serif;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  background: linear-gradient(90deg,
+    #ff0000,
+    #ff7700,
+    #ffee00,
+    #00cc44,
+    #0088ff,
+    #8800ff,
+    #ff00cc,
+    #ff0000
+  );
+  background-size: 200% 100%;
+  animation: rainbow-slide 4s linear infinite;
+}
+
+@keyframes rainbow-slide {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* Sidebar: rainbow gradient */
+:root {
+  --token-side-nav-color-surface-primary: #1a0033;
+  --token-side-nav-color-surface-interactive-hover: #2d0052;
+  --token-side-nav-color-surface-interactive-active: #4a0080;
+
+  /* Vault brand accent: rainbow-ish magenta */
+  --token-color-vault-brand: #ff00cc;
+  --token-color-vault-foreground: #cc0099;
+  --token-color-vault-surface: #ffe0f7;
+  --token-color-vault-border: #ff99ee;
+  --token-color-vault-gradient-primary-start: #ff7700;
+  --token-color-vault-gradient-primary-stop: #ff00cc;
+}
+
+/* Animated rainbow left border on the sidebar */
+.hds-app-side-nav {
+  border-right: 3px solid transparent;
+  background-image: linear-gradient(#1a0033, #1a0033),
+    linear-gradient(180deg, #ff0000, #ff7700, #ffee00, #00cc44, #0088ff, #8800ff, #ff00cc);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* Logo: hide SVG, show rainbow text */
+.hds-app-side-nav__header-home-link svg {
+  display: none;
+}
+.hds-app-side-nav__header-home-link::after {
+  content: "RAINBOW VAULT";
+  display: block;
+  font: 700 13px/1.2 sans-serif;
+  letter-spacing: 0.08em;
+  padding: 4px 0;
+  background: linear-gradient(90deg, #ff0000, #ff7700, #ffee00, #00cc44, #0088ff, #8800ff, #ff00cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
